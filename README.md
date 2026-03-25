@@ -48,3 +48,5 @@ export GITHUB_SIGNATURE_256="$header_x_hub_signature_256"
 export REPO_DIR='/opt/vibe-everywhere'
 cat payload.json | ./deploy.sh
 ```
+
+test
