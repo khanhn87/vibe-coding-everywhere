@@ -62,8 +62,14 @@ sudo apt install -y git curl build-essential</code></pre>
         </li>
         <li>
           <h3>2. Connect GitHub</h3>
-          <p>Clone your project and verify push access from server.</p>
-          <pre><code id="cmd-2">git clone git@github.com:your-org/your-repo.git
+          <p>Choose one method below (HTTPS or SSH), then verify remote access from server.</p>
+          <pre><code id="cmd-2"># Option A: HTTPS
+git clone https://github.com/your-org/your-repo.git
+cd your-repo
+git remote -v
+
+# Option B: SSH
+git clone git@github.com:your-org/your-repo.git
 cd your-repo
 git remote -v</code></pre>
           <button data-copy="cmd-2">Copy</button>
