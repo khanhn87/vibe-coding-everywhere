@@ -84,10 +84,12 @@ codex run "echo ready"</code></pre>
         </li>
         <li>
           <h3>4. Wire CCPoke + Telegram</h3>
-          <p>Set your bot token/webhook and map incoming messages to your execution workflow.</p>
-          <pre><code id="cmd-4">export TELEGRAM_BOT_TOKEN=your_token
-export TELEGRAM_CHAT_ID=your_chat
-ccpoke start</code></pre>
+          <p>Run the setup wizard, connect your bot, then install globally for daily use.</p>
+          <pre><code id="cmd-4"># First run (interactive setup wizard)
+npx -y ccpoke
+
+# Optional for daily usage
+npm i -g ccpoke</code></pre>
           <button data-copy="cmd-4">Copy</button>
         </li>
         <li>
