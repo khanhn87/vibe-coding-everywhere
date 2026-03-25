@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Everywhere Setup Guide</title>
+  <meta name="description" content="Set up Vibe Coding Everywhere via Telegram using Codex CLI, CCPoke, VPS, and GitHub." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="hero">
+    <p class="eyebrow">Blueprint</p>
+    <h1>Vibe Coding Everywhere<br />from Telegram</h1>
+    <p class="hero-copy">
+      A practical setup guide for running your coding workflow remotely with
+      <strong>Codex CLI</strong>, <strong>CCPoke</strong>, <strong>VPS</strong>, and <strong>GitHub</strong>.
+    </p>
+    <a class="cta" href="#steps">Start Setup</a>
+  </header>
+
+  <main>
+    <section class="panel" id="stack">
+      <h2>System Stack</h2>
+      <div class="chips">
+        <span>Telegram</span>
+        <span>Codex CLI</span>
+        <span>CCPoke</span>
+        <span>Ubuntu VPS</span>
+        <span>GitHub</span>
+      </div>
+      <p>
+        Telegram sends instructions. CCPoke receives and orchestrates. Codex CLI executes coding tasks on your VPS.
+        GitHub stores code, history, and CI.
+      </p>
+    </section>
+
+    <section class="panel" id="prerequisites">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>A Linux VPS with SSH access</li>
+        <li>A GitHub account and repo</li>
+        <li>Telegram account + bot token</li>
+        <li>Codex CLI installed and authenticated</li>
+        <li>CCPoke installed/configured on VPS</li>
+      </ul>
+    </section>
+
+    <section class="panel" id="steps">
+      <h2>Setup Flow</h2>
+      <ol class="steps">
+        <li>
+          <h3>1. Prepare VPS</h3>
+          <p>Install runtime dependencies and secure SSH/firewall first.</p>
+          <pre><code id="cmd-1">sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl build-essential</code></pre>
+          <button data-copy="cmd-1">Copy</button>
+        </li>
+        <li>
+          <h3>2. Connect GitHub</h3>
+          <p>Clone your project and verify push access from server.</p>
+          <pre><code id="cmd-2">git clone git@github.com:your-org/your-repo.git
+cd your-repo
+git remote -v</code></pre>
+          <button data-copy="cmd-2">Copy</button>
+        </li>
+        <li>
+          <h3>3. Configure Codex CLI</h3>
+          <p>Authenticate Codex CLI and confirm command execution works.</p>
+          <pre><code id="cmd-3">codex --version
+codex auth login
+codex run "echo ready"</code></pre>
+          <button data-copy="cmd-3">Copy</button>
+        </li>
+        <li>
+          <h3>4. Wire CCPoke + Telegram</h3>
+          <p>Set your bot token/webhook and map incoming messages to your execution workflow.</p>
+          <pre><code id="cmd-4">export TELEGRAM_BOT_TOKEN=your_token
+export TELEGRAM_CHAT_ID=your_chat
+ccpoke start</code></pre>
+          <button data-copy="cmd-4">Copy</button>
+        </li>
+        <li>
+          <h3>5. Run End-to-End Test</h3>
+          <p>Send a Telegram command and verify VPS execution + GitHub update.</p>
+          <pre><code id="cmd-5"># Telegram message example
+/deploy main
+
+# Verify on VPS
+git log --oneline -n 3</code></pre>
+          <button data-copy="cmd-5">Copy</button>
+        </li>
+      </ol>
+    </section>
+
+    <section class="panel" id="notes">
+      <h2>Production Notes</h2>
+      <ul>
+        <li>Run services with `systemd` or PM2 for auto-restart.</li>
+        <li>Use GitHub Deploy Keys with least privilege.</li>
+        <li>Store secrets in `.env` and never commit them.</li>
+        <li>Add a command allowlist to avoid arbitrary execution from Telegram.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Replace sample commands with your exact flow and keep this page as your setup single source of truth.</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
